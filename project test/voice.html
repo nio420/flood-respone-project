@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Communication</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Voice Communication</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="dashboard.html">Home</a></li>
+            <li><a href="water.html">Water Level</a></li>
+            <li><a href="voice.html">Voice Communication</a></li>
+            <li><a href="web.html">Web Integration</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="voice">
+            <h2>Voice Communication</h2>
+            <p>Below is the received voice message:</p>
+
+            <!-- Section to display the received voice -->
+            <div id="voice-display">
+                <p>No voice message received yet.</p>
+            </div>
+
+            <!-- Simulated input for user to send voice -->
+            <form id="voice-form">
+                <label for="voice-input">Send a voice message:</label>
+                <input type="file" id="voice-input" accept="audio/*">
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // JavaScript to handle voice message preview
+        const voiceForm = document.getElementById('voice-form');
+        const voiceInput = document.getElementById('voice-input');
+        const voiceDisplay = document.getElementById('voice-display');
+
+        voiceForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from reloading the page
+
+            if (voiceInput.files.length > 0) {
+                const audioFile = voiceInput.files[0];
+                const audioURL = URL.createObjectURL(audioFile);
+
+                // Display the audio in the voice-display section
+                voiceDisplay.innerHTML = `
+                    <audio controls>
+                        <source src="${audioURL}" type="${audioFile.type}">
+                        Your browser does not support the audio element.
+                    </audio>
+                `;
+            } else {
+                alert("Please select a voice file before sending!");
+            }
+        });
+    </script>
+</body>
+</html>

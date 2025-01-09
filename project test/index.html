@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Flood Rescue Login</title>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Flood Rescue System</h1>
+        <!-- <form action="dashboard.html" method="GET">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter Valid username" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter Your password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+    </div> -->
+    <form onsubmit="return validateCredentials(event)">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username" required>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+        
+        <p id="error-message" class="error" style="display: none;">Invalid username or password</p>
+        
+        <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script>
+    function validateCredentials(event) {
+        // Stop the form from submitting normally
+        event.preventDefault();
+
+        // Define the correct username and password
+        const correctUsername = "flood2025";
+        const correctPassword = "2025";
+
+        // Get the user's input from the form
+        const enteredUsername = document.getElementById('username').value;
+        const enteredPassword = document.getElementById('password').value;
+
+        // Check if the input matches the correct username and password
+        if (enteredUsername === correctUsername && enteredPassword === correctPassword) {
+            // If correct, go to the dashboard
+            window.location.href = 'dashboard.html';
+        } else {
+            // If incorrect, show an error message
+            document.getElementById('error-message').style.display = 'block ';
+        }
+    }
+</script>
+
+</body>
+</html>
